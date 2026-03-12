@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>高齢化・救急需要・フレイル・ACPロードマップ</title>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Meiryo", system-ui, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      margin: 0;
+      padding: 24px;
+      line-height: 1.7;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1f3b57;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #566573;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .roadmap-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+
+    .legend-pop { background: #d6eaf8; }
+    .legend-med { background: #d5f5e3; }
+    .legend-er  { background: #fdebd0; }
+    .legend-frail { background: #f9e79f; }
+    .legend-acp { background: #e8daef; }
+    .legend-future { background: #d1f2eb; }
+
+    .flow-wrapper {
+      position: relative;
+      margin-top: 24px;
+      padding: 24px 16px 40px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    /* 矢印の縦ライン（背景のガイド） */
+    .flow-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, #ccd1d1, #f5f7fa);
+      transform: translateX(-50%);
+      opacity: 0.6;
+    }
+
+    .step {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .step:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .step-left {
+      position: relative;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid #d6dbdf;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .step-right {
+      position: relative;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: #fbfcfc;
+      border: 1px dashed #d6dbdf;
+    }
+
+    .step-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f2f4f4;
+      color: #566573;
+      margin-bottom: 6px;
+    }
+
+    .step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .step-title span.icon {
+      font-size: 1.1rem;
+    }
+
+    .step-sub {
+      font-size: 0.9rem;
+      color: #7b7d7d;
+      margin-bottom: 8px;
+    }
+
+    .step ul {
+      margin: 0;
+      padding-left: 1.2em;
+      font-size: 0.9rem;
+    }
+
+    .step li {
+      margin-bottom: 4px;
+    }
+
+    /* 各ステップの色分け */
+    .step-pop .step-left { background: #d6eaf8; border-color: #aed6f1; }
+    .step-med .step-left { background: #d5f5e3; border-color: #abebc6; }
+    .step-er  .step-left { background: #fdebd0; border-color: #fad7a0; }
+    .step-frail .step-left { background: #f9e79f; border-color: #f7dc6f; }
+    .step-acp .step-left { background: #e8daef; border-color: #d2b4de; }
+    .step-future .step-left { background: #d1f2eb; border-color: #a3e4d7; }
+
+    .step-pop .step-tag { background: #ebf5fb; }
+    .step-med .step-tag { background: #eafaf1; }
+    .step-er  .step-tag { background: #fef5e7; }
+    .step-frail .step-tag { background: #fef9e7; }
+    .step-acp .step-tag { background: #f5eef8; }
+    .step-future .step-tag { background: #e8f8f5; }
+
+    /* ステップ間の矢印 */
+    .arrow-block {
+      text-align: center;
+      margin: 4px 0 20px;
+      font-size: 1.4rem;
+      color: #99a3a4;
+    }
+
+    .arrow-label {
+      font-size: 0.8rem;
+      color: #7b7d7d;
+      margin-top: -4px;
+      margin-bottom: 8px;
+    }
+
+    /* 上部の全体フロー概要 */
+    .overview {
+      margin-bottom: 24px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: #fdfefe;
+      border: 1px solid #d6dbdf;
+      font-size: 0.9rem;
+    }
+
+    .overview-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #1f3b57;
+    }
+
+    .overview-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #566573;
+    }
+
+    .pill {
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #e5e7e9;
+      white-space: nowrap;
+    }
+
+    .pill-pop { background: #d6eaf8; }
+    .pill-med { background: #d5f5e3; }
+    .pill-er  { background: #fdebd0; }
+    .pill-frail { background: #f9e79f; }
+    .pill-acp { background: #e8daef; }
+    .pill-future { background: #d1f2eb; }
+
+    /* レスポンシブ */
+    @media (max-width: 800px) {
+      .step {
+        grid-template-columns: 1fr;
+      }
+      .flow-line {
+        left: 8px;
+        transform: none;
+      }
+      .step-left, .step-right {
+        padding: 14px 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 16px;
+      }
+      h1 {
+        font-size: 1.2rem;
+      }
+      .subtitle {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="roadmap-container">
+    <h1>高齢化・救急需要・フレイル・ACPのロードマップ</h1>
+    <div class="subtitle">
+      「人口構造の変化」から「救急医療の危機」、そして「ACPによる未来の再設計」までを一望する図解
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-color legend-pop"></div><span>人口・社会構造</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color legend-med"></div><span>医療供給側</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color legend-er"></div><span>救急需要・救急体制</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color legend-frail"></div><span>フレイル・生活機能</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color legend-acp"></div><span>ACP（人生の設計）</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color legend-future"></div><span>目指す未来像</span>
+      </div>
+    </div>
+
+    <div class="overview">
+      <div class="overview-title">全体の流れ（俯瞰）</div>
+      <div class="overview-flow">
+        <span class="pill pill-pop">① 人口の高齢化</span>
+        <span>→</span>
+        <span class="pill pill-med">② 医療従事者の高齢化・供給低下</span>
+        <span>→</span>
+        <span class="pill pill-er">③ 救急需要の増大</span>
+        <span>→</span>
+        <span class="pill pill-er">④ 救急供給体制の持続困難</span>
+        <span>→</span>
+        <span class="pill pill-frail">⑤ フレイルの進行</span>
+        <span>→</span>
+        <span class="pill pill-acp">⑥ ACPの希薄さ（根本原因）</span>
+        <span>→</span>
+        <span class="pill pill-acp">⑦ ACPの確立</span>
+        <span>→</span>
+        <span class="pill pill-future">⑧ 目的を持った老後生活と救急需要の抑制</span>
+      </div>
+    </div>
+
+    <div class="flow-wrapper">
+      <div class="flow-line"></div>
+
+      <!-- ① 人口の高齢化 -->
+      <div class="step step-pop">
+        <div class="step-left">
+          <div class="step-tag">社会の前提条件</div>
+          <div class="step-title"><span class="icon">👵👴</span>① 人口の高齢化</div>
+          <div class="step-sub">高齢者人口の増加と家族機能の弱体化により、生活リスクが高まる。</div>
+          <ul>
+            <li>高齢者人口の増加</li>
+            <li>独居・老老世帯の増加</li>
+            <li>家族機能の弱体化（遠方・疎遠・少子化）</li>
+            <li>地域での支え合い機能の低下</li>
+          </ul>
+        </div>
+        <div class="step-right">
+          <div class="step-sub">ここで起きていること</div>
+          <ul>
+            <li>日常生活のリスク（転倒・孤立・体調悪化）が増える</li>
+            <li>「何かあったとき」に頼れる人・場所が見えにくい</li>
+            <li>生活の不安はあるが、具体的な備えはされていない</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arrow-block">⬇</div>
+
+      <!-- ② 医療従事者の高齢化 -->
+      <div class="step step-med">
+        <div class="step-left">
+          <div class="step-tag">医療供給側の変化</div>
+          <div class="step-title"><span class="icon">🏥</span>② 医療従事者の高齢化・供給低下</div>
+          <div class="step-sub">医療を支える側も高齢化し、救急・当直体制の維持が難しくなる。</div>
+          <ul>
+            <li>医師・看護師の高齢化</li>
+            <li>当直・救急対応の負担増大</li>
+            <li>若手医師の地域離れ・救急離れ</li>
+            <li>医療機関の体力低下（人員・財源）</li>
+          </ul>
+        </div>
+        <div class="step-right">
+          <div class="step-sub">ここで起きていること</div>
+          <ul>
+            <li>「診たいけれど診きれない」状況が増える</li>
+            <li>救急・当直の担い手が限られ、特定の科に負担が集中</li>
+            <li>医療供給能力がじわじわと低下していく</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arrow-block">⬇</div>
+
+      <!-- ③ 救急需要の増大 -->
+      <div class="step step-er">
+        <div class="step-left">
+          <div class="step-tag">需要側の増加</div>
+          <div class="step-title"><span class="icon">🚑</span>③ 救急需要の増大</div>
+          <div class="step-sub">生活の限界や体調悪化が「救急搬送」という形で表面化する。</div>
+          <ul>
+            <li>独居高齢者の夜間・休日の救急依存</li>
+            <li>認知症・フレイルによる急変</li>
+            <li>家族不在・疎遠による判断不能</li>
+            <li>生活破綻が「救急搬送」の引き金になる</li>
+          </ul>
+        </div>
+        <div class="step-right">
+          <div class="step-sub">ここで起きていること</div>
+          <ul>
+            <li>「本来はもっと前に介入すべきだったケース」が救急に流れ込む</li>
+            <li>夜間・休日に救急需要が集中しやすい</li>
+            <li>救急医療が“生活の最後の受け皿”になってしまう</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arrow-block">⬇</div>
+
+      <!-- ④ 救急供給体制の持続困難 -->
+      <div class="step step-er">
+        <div class="step-left">
+          <div class="step-tag">構造的危機</div>
+          <div class="step-title"><span class="icon">⚠️</span>④ 救急供給体制の持続困難性</div>
+          <div class="step-sub">需要は増え続ける一方で、救急を支える体制は限界に近づく。</div>
+          <ul>
+            <li>夜間・休日の救急が逼迫</li>
+            <li>救急車出動件数の増加</li>
+            <li>入院先の確保困難・たらい回し</li>
+            <li>医療者の疲弊・若手離れ・医療の質低下</li>
+          </ul>
+        </div>
+        <div class="step-right">
+          <div class="step-sub">ここで起きていること</div>
+          <ul>
+            <li>「地域として救急を賄えているとは言えない」状況が現実化</li>
+            <li>救急医療そのものの持続可能性が揺らぐ</li>
+            <li>結果として、地域住民の安心感も損なわれていく</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arrow-block">
+        ⬇
+        <div class="arrow-label">この背景に何があるのか？</div>
+      </div>
+
+      <!-- ⑤ フレイルの進行 -->
+      <div class="step step-frail">
+        <div class="step-left">
+          <div class="step-tag">生活機能の低下</div>
+          <div class="step-title"><span class="icon">🧩</span>⑤ フレイルの進行</div>
+          <div class="step-sub">退職後の生活設計の曖昧さが、フレイルの進行と救急依存につながる。</div>
+          <ul>
+            <li>退職後の過ごし方・目標が曖昧なまま時間が過ぎる</li>
+            <li>社会参加の減少・閉じこもり・孤立</li>
+            <li>運動・栄養・認知刺激の不足</li>
+            <li>生活の限界に本人も周囲も気づきにくい</li>
+          </ul>
+        </div>
+        <div class="step-right">
+          <div class="step-sub">ここで起きていること</div>
+          <ul>
+            <li>「なんとなくしんどい」「なんとなく不安」が積み重なる</li>
+            <li>明確な目標や役割がないため、変化に対する行動が起きにくい</li>
+            <li>結果として、フレイルが進行し、救急の入口に立たされる</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arrow-block">
+        ⬇
+        <div class="arrow-label">さらに、その背景にあるもの</div>
+      </div>
+
+      <!-- ⑥ ACPの希薄さ -->
+      <div class="step step-acp">
+        <div class="step-left">
+          <div class="step-tag">根本原因</div>
+          <div class="step-title"><span class="icon">🧭</span>⑥ ACPの希薄さ</div>
+          <div class="step-sub">「自分らしく生きるための設計図」がないことが、フレイルと救急依存を加速させる。</div>
+          <ul>
+            <li>自分らしい生き方の軸が言語化されていない</li>
+            <li>生活の優先順位・大切にしたいことが曖昧</li>
+            <li>支援を受ける条件（どこまで・誰に）が整理されていない</li>
+            <li>本人の意思が家族・医療者に共有されていない</li>
+            <li>意思決定能力が低下してから初めて問題が表面化する</li>
+          </ul>
+        </div>
+        <div class="step-right">
+          <div class="step-sub">ここで起きていること</div>
+          <ul>
+            <li>「気づいたときには、もう自分で決められない」状態になりやすい</li>
+            <li>家族も「どうしてあげるのがいいのか」分からない</li>
+            <li>結果として、救急搬送・入院が“デフォルトの選択肢”になってしまう</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arrow-block">
+        ⬇
+        <div class="arrow-label">では、どう変えていくのか？</div>
+      </div>
+
+      <!-- ⑦ ACPの確立 -->
+      <div class="step step-acp">
+        <div class="step-left">
+          <div class="step-tag">需要側の改革</div>
+          <div class="step-title"><span class="icon">📘</span>⑦ ACPの確立</div>
+          <div class="step-sub">ACPを「老後の教科書」として位置づけ、人生の設計図を事前に描いておく。</div>
+          <ul>
+            <li>① 自分らしい生き方：価値観・役割・避けたい状態の明確化</li>
+            <li>② 続けるための条件：家族・制度・資源・住環境の整理</li>
+            <li>③ 見直しのタイミング：生活の限界・変化のサインを共有</li>
+            <li>④ 次のステージへ：もしものときの医療・生活の方針を準備</li>
+          </ul>
+        </div>
+        <div class="step-right">
+          <div class="step-sub">ここで起きる変化</div>
+          <ul>
+            <li>本人：自分の人生の方向性を持って老後を迎えられる</li>
+            <li>家族：迷いが減り、判断の負担が軽くなる</li>
+            <li>医療者：救急に至る前に介入できるポイントが見える</li>
+            <li>結果として、不必要な救急搬送が減少していく</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arrow-block">⬇</div>
+
+      <!-- ⑧ 目的を持った老後生活と救急需要の抑制 -->
+      <div class="step step-future">
+        <div class="step-left">
+          <div class="step-tag">目指す未来像</div>
+          <div class="step-title"><span class="icon">🌈</span>⑧ 目的を持った老後生活と救急需要の抑制</div>
+          <div class="step-sub">ACPが根づくことで、本人・家族・医療・地域のすべてにとって「持続可能な未来」が見えてくる。</div>
+          <ul>
+            <li>本人：自分らしい生活を続けながら、もしものときにも納得感のある選択ができる</li>
+            <li>家族：夜間・休日の突発的な救急対応が減り、心身の負担が軽減される</li>
+            <li>医療者：救急の過負荷が軽減され、当直・救急体制の質を保ちやすくなる</li>
+            <li>地域：救急需要が安定し、限られた医療資源を適切に活用できる</li>
+          </ul>
+        </div>
+        <div class="step-right">
+          <div class="step-sub">ロードマップの意味</div>
+          <ul>
+            <li>ACPは「終末期の話し合い」ではなく、「老後の生き方の教科書」である</li>
+            <li>ACPの有無が、救急需要の多寡を左右する最大の因子となる</li>
+            <li>人口の高齢化と医療従事者の高齢化が進む社会において、ACPは地域医療を守るための“社会インフラ”である</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

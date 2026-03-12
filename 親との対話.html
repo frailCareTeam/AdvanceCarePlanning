@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>自分の親とACPについて話したいときの切り出し方</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+ /* 文字色をさらに濃くする */
+:root {
+  --acp-text-main: #0f0f0f;   /* ほぼ黒、視認性が高い */
+  --acp-text-sub: #1c1c1c;    /* メインより少しだけ薄い */
+}
+@media (max-width: 480px) {
+  body {
+    font-size: 1.05rem; /* スマホでは少し大きめ */
+  }
+}
+/* 全体の文字を太くする */
+body {
+ font-size: 1rem; /* 16px相当に */
+  color: var(--acp-text-main);
+  font-weight: 500;   /* 標準より太い（読みやすい） */
+}
+
+/* 見出しはさらに太く */
+.acp-cutin-title,
+.acp-step-title {
+  font-weight: 700;
+  color: var(--acp-text-main);
+}
+
+/* 本文・例文も太めに */
+.acp-cutin-subtitle,
+.acp-step-body,
+.acp-step-example-box {
+  line-height: 1.8; /* 読みやすさUP */
+}
+
+.acp-cutin-footer {
+  color: var(--acp-text-main);
+  font-weight: 500;
+}
+
+/* ラベルも濃く */
+.acp-step-example-label {
+  color: var(--acp-text-sub);
+  font-weight: 600;
+}
+/* Stepごとに背景色を明確に変える（強調版） */
+.acp-step-card.step1 {
+  background: #e8f5e9;   /* 明るい緑（導入） */
+  border-left: 6px solid #66bb6a;
+}
+
+.acp-step-card.step2 {
+  background: #c8e6c9;   /* 中間の緑（接近） */
+  border-left: 6px solid #43a047;
+}
+
+.acp-step-card.step3 {
+  background: #a5d6a7;   /* 最も濃い緑（核心） */
+  border-left: 6px solid #2e7d32;
+}
+
+    body {
+      font-size: 1rem; /* 16px相当に */
+      font-family: -apple-system, BlinkMacSystemFont, "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: var(--acp-text-main);
+      line-height: 1.7;
+    }
+
+    .acp-cutin-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    .acp-cutin-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--acp-green-deep);
+      margin-bottom: 8px;
+    }
+
+    .acp-cutin-subtitle {
+      font-size: 0.95rem;
+      color: var(--acp-text-sub);
+      margin-bottom: 20px;
+    }
+
+    .acp-cutin-intro {
+      background: var(--acp-bg-soft);
+      border-left: 4px solid var(--acp-green-main);
+      padding: 12px 14px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .acp-step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .acp-step-card {
+      border-radius: 10px;
+      border: 1px solid #e0ece6;
+      padding: 14px 14px 16px;
+      background: #ffffff;
+    }
+
+    .acp-step-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .acp-step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #070707;
+      background: var(--acp-green-main);
+    }
+
+    .acp-step-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--acp-green-deep);
+    }
+
+    .acp-step-body {
+      font-size: 0.95rem;
+      color: var(--acp-text-main);
+      margin-top: 4px;
+    }
+
+    .acp-step-example-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--acp-text-sub);
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    .acp-step-example-box {
+      background: var(--acp-bg-soft);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      color: var(--acp-text-main);
+      white-space: pre-line;
+    }
+
+    .acp-cutin-footer {
+      font-size: 0.9rem;
+      color: var(--acp-text-sub);
+      margin-top: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .acp-cutin-wrapper {
+        padding: 32px 8px 48px;
+      }
+      .acp-cutin-title {
+        font-size: 1.8rem;
+      }
+      .acp-step-card {
+        padding: 16px 18px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="acp-cutin-wrapper">
+    <h1 class="acp-cutin-title">自分の親とACPについて話したいときの切り出し方</h1>
+    <p class="acp-cutin-subtitle">
+      「いまさら聞けない」「どう切り出せばいいか分からない」と感じるのは、とても自然なことです。<br>
+      ここでは、親の自尊心と自立を尊重しながら、少しずつ話を始めるための3つのステップを紹介します。
+    </p>
+
+    <section class="acp-cutin-intro">
+      ACPは、延命治療の可否だけを決めるものではなく、<br>
+      「どんなふうに暮らしていきたいか」「何を大切にしたいか」を一緒に考える対話です。<br>
+      家族だからこそ難しいと感じるときに、そっと使える“言葉の足がかり”としてご活用ください。
+    </section>
+
+    <section class="acp-step-list">
+
+      <!-- Step 1 -->
+      <article class="acp-step-card step1">
+        <header class="acp-step-header">
+          <span class="acp-step-badge">Step 1</span>
+          <h2 class="acp-step-title">家族（兄弟・孫など）の話題から入る</h2>
+        </header>
+        <div class="acp-step-body">
+          まずは、兄弟やお孫さん、家族の近況など、誰にとっても話しやすい“軽い話題”から始めます。<br>
+          親御さんが構えずに聞ける、自然なウォーミングアップになります。
+        </div>
+        <div class="acp-step-example-label">例）</div>
+        <div class="acp-step-example-box">
+この前、お兄ちゃん（孫）が健康の話をしていてね…
+最近、家族で「これからの暮らし」の話をすることがあってね…
+        </div>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="acp-step-card step2">
+        <header class="acp-step-header">
+          <span class="acp-step-badge">Step 2</span>
+          <h2 class="acp-step-title">自分（子）の話をする</h2>
+        </header>
+        <div class="acp-step-body">
+          次に、自分自身の体調や体力の変化、これからの暮らし方についての考えを話します。<br>
+          親御さんを「弱い立場」として扱わず、対等な会話として受け取ってもらえる大切なステップです。
+        </div>
+        <div class="acp-step-example-label">例）</div>
+        <div class="acp-step-example-box">
+最近、前より疲れやすくなってきてね。
+自分のこれからのことを少し考えるようになったんだ。
+
+もし自分が体調を崩したら、こう過ごしたいなって思ってて…
+        </div>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="acp-step-card step3">
+        <header class="acp-step-header">
+          <span class="acp-step-badge">Step 3</span>
+          <h2 class="acp-step-title">親（本人）の「これから」をそっと聞く</h2>
+        </header>
+        <div class="acp-step-body">
+          会話の流れの中で、親御さん自身の「これからの暮らし」や「大切にしたいこと」について、そっと尋ねます。<br>
+          押しつけではなく、自然なバトン渡しとして聞ける形を意識します。
+        </div>
+        <div class="acp-step-example-label">例）</div>
+        <div class="acp-step-example-box">
+お母さん（お父さん）は、どんなふうに過ごしていきたいと思ってる？
+
+もし体調を崩した時、どんなふうにしていたい？
+
+大切にしていることって、どんなこと？
+        </div>
+      </article>
+
+    </section>
+
+    <section class="acp-cutin-footer">
+      この3つのステップは、<br>
+      親御さんの自尊心と自立を守りながら、家族として「一緒に考える」ための小さな足がかりです。<br>
+      うまく話せなくても大丈夫です。少しずつ、何度かに分けて話していくこと自体が、すでにACPの一歩です。
+    </section>
+  </main>
+</body>
+</html>

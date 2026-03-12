@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>人生の終着点が近づいているとしたら</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg-color: #f7f7f7;
+      --card-bg: #ffffff;
+      --text-color: #222222;
+      --muted-text: #555555;
+      --accent: #2b6cb0;
+      --accent-soft: #e3f2fd;
+      --border-color: #e0e0e0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #111111;
+        --card-bg: #1c1c1c;
+        --text-color: #f5f5f5;
+        --muted-text: #bbbbbb;
+        --accent: #63b3ed;
+        --accent-soft: #1a365d;
+        --border-color: #333333;
+      }
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 16px 12px 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 720px;
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px 18px 24px;
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.06),
+        0 1px 3px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-color);
+    }
+
+    /* タイトル（余白を広げた） */
+    h1 {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin: 0 0 32px; /* ← タイトル下の余白を広げた */
+      color: var(--text-color);
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    p {
+      font-size: 0.95rem;
+      margin: 0 0 14px;
+    }
+
+    .block {
+      margin-bottom: 18px;
+    }
+
+    .inline-quotes span {
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 4px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background-color: var(--accent-soft);
+      font-size: 0.85rem;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .list {
+      margin: 4px 0 14px;
+      padding-left: 1.1rem;
+    }
+
+    .list li {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .highlight-box {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background-color: var(--accent-soft);
+      font-size: 0.9rem;
+    }
+
+    .closing {
+      margin-top: 18px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    /* --- フッター（ロゴ下部配置） --- */
+    .footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .footer-logo {
+      width: 110px;
+      height: auto;
+      margin-bottom: 6px;
+    }
+
+    .footer-hospital-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-color);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 400px) {
+      body {
+        font-size: 15px;
+      }
+      h1 {
+        font-size: 1.15rem;
+      }
+      .card {
+        padding: 18px 14px 22px;
+      }
+      .footer-logo {
+        width: 95px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <main class="card" role="main">
+
+      <h1>人生の終着点が近づいているとしたら、あなたはどう過ごしたいですか</h1>
+
+      <section class="block">
+        <div class="inline-quotes">
+          <span>「食事が食べられなくなった」</span>
+          <span>「ベッドで過ごすことが多くなった」</span>
+          <span>「トイレへの移動が難しくなった」</span>
+        </div>
+        <p>こうした身体の変化は、生命力が弱ってきているサインです。さらに、</p>
+
+        <div class="inline-quotes">
+          <span>「寝ている時間が増えた」</span>
+          <span>「つらさが増えた」</span>
+          <span>「コミュニケーションが減った」</span>
+          <span>「生活をこなすだけで精一杯になった」</span>
+          <span>「今の生活を続けるのが難しくなった」</span>
+        </div>
+
+        <p>といった変化が重なる場合、医学的にみて<strong>残された時間が限られてきている可能性</strong>があります。</p>
+      </section>
+
+      <section class="block">
+        <p>この段階では、病院で検査や治療を繰り返しても、元の状態に戻すことはできません。むしろ、病院での医療を続けることで、大切なものが失われていく可能性があります。</p>
+
+        <ul class="list">
+          <li>限られた時間を、病院で過ごすことになる</li>
+          <li>元の生活の場に戻れなくなる</li>
+          <li>やり残したことや、伝えたいことをする機会がなくなる</li>
+          <li>本人が望む“その人らしい過ごし方”から遠ざかる</li>
+        </ul>
+
+        <p>このように、病院で医療を続けることが、必ずしも本人にとって望ましい選択ではなくなっていきます。ここから先は、医療の役割が静かに変わっていきます。</p>
+      </section>
+
+      <section class="block">
+        <p>「治すための医療」から、「その人らしく過ごすために支える医療」へと役割が変わっていきます。苦痛や不安を和らげ、安心できる生活の場で落ち着いて過ごせるよう支えることが中心になります。</p>
+      </section>
+
+      <section class="block">
+        <p>そして、この時期に大切になるのは、<strong>これからの時間をどう過ごしたいか</strong>を一緒に考えることです。</p>
+
+        <ul class="list">
+          <li>これからの時間を、どのように過ごしたいか</li>
+          <li>苦しさが出たとき、どこで、どのように支えてほしいか</li>
+          <li>病院での積極的な処置を望むのか、それとも苦しさを減らすことを優先したいのか</li>
+          <li>ご家族がどのように関わりたいか</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p>これらは<strong>正解のある話ではありません</strong>。その人らしい選択を一緒に考えるための対話です。</p>
+        </div>
+      </section>
+
+      <section class="closing">
+        <p><strong>これからの時間について話し合い、備えることが、本人とご家族の安心につながります。</strong></p>
+      </section>
+
+      <!-- フッター（ロゴ下部配置） -->
+      <footer class="footer">
+        <img src="saiseikai.png" alt="済生会小樽病院ロゴ" class="footer-logo">
+      </footer>
+
+    </main>
+  </div>
+</body>
+</html>
