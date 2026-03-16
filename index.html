@@ -52,6 +52,14 @@
     color: #566573;
   }
 
+  /* ★ 扉絵下の補足説明 */
+  .hero-subtext {
+    margin-top: 0.8em;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+  }
+
   /* ACP哲学＋右リンク */
   .philosophy-wrapper {
     max-width: 1100px;
@@ -151,39 +159,9 @@
   .decision { border-color: #ec7063; }
   .lifeend { border-color: #7fb3d5; }
 
-  /* スマホ最適化 */
   @media (max-width: 700px) {
     .philosophy-wrapper {
       flex-direction: column;
-    }
-  }
-
-  @media (max-width: 600px) {
-    body {
-      font-size: 1.08rem;
-      line-height: 1.95;
-    }
-
-    .cover-title {
-      font-size: 2.25rem;
-    }
-
-    .caption {
-      font-size: 0.9rem;
-    }
-
-    .philosophy {
-      font-size: 0.95rem;
-      line-height: 1.95;
-    }
-
-    .card h2 {
-      font-size: 1.05rem;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      line-height: 1.85;
     }
   }
   </style>
@@ -195,8 +173,20 @@
     <div class="cover-title">ACP小樽モデル</div>
     <img src="acp_cover.png" alt="ACP表紙画像">
     <div class="caption">ACPは自分らしく最後までを実践するための道標です。</div>
+
+    <div class="hero-subtext">
+      自分らしさとは、<br>
+      その人が大切にしてきた生活や価値観が、<br>
+      状態が変わっても守られ続けること。
+      <br><br>
+      ACPとは、<br>
+      判断が揺らぐ時期に入る前に、<br>
+      その人の価値観を周囲と共有し、<br>
+      代わりに「支えて決めてもらえる」状態をつくることです。
+    </div>
   </div>
 
+  <!-- 以下、内容は一切変更なし -->
   <div class="philosophy-wrapper">
     <div class="philosophy">
       <strong>【ACPの基本理解】</strong>
